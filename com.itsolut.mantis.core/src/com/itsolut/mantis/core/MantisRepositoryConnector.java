@@ -35,7 +35,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.mylyn.commons.net.Policy;
-import org.eclipse.mylyn.internal.tasks.ui.util.TasksUiInternal;
 import org.eclipse.mylyn.tasks.core.*;
 import org.eclipse.mylyn.tasks.core.data.*;
 import org.eclipse.mylyn.tasks.core.sync.ISynchronizationSession;
@@ -431,16 +430,15 @@ public class MantisRepositoryConnector extends AbstractRepositoryConnector {
     private List<IRepositoryQuery> getMantisQueriesFor(TaskRepository taskRespository) {
 
         List<IRepositoryQuery> queries = new ArrayList<IRepositoryQuery>();
-
-        for (IRepositoryQuery query : TasksUiInternal.getTaskList().getQueries()) {
-
-            boolean isMantisQuery = MantisCorePlugin.REPOSITORY_KIND.equals(query.getConnectorKind());
-            boolean belongsToThisRepository = query.getRepositoryUrl().equals(taskRespository.getUrl());
-
-            if (isMantisQuery && belongsToThisRepository) {
-                queries.add(query);
-            }
-        }
+//        for (IRepositoryQuery query : TasksUiInternal.getTaskList().getQueries()) {
+//
+//            boolean isMantisQuery = MantisCorePlugin.REPOSITORY_KIND.equals(query.getConnectorKind());
+//            boolean belongsToThisRepository = query.getRepositoryUrl().equals(taskRespository.getUrl());
+//
+//            if (isMantisQuery && belongsToThisRepository) {
+//                queries.add(query);
+//            }
+//        }
 
         return queries;
     }
