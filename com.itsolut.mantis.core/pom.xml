@@ -3,6 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<properties>
+		<mantisbt.soap.version>1.2.15</mantisbt.soap.version>
+	</properties>
+	
 	<parent>
 		<groupId>com.itsolut.mantis</groupId>
 		<artifactId>com.itsolut.mantis.parent</artifactId>
@@ -65,8 +69,5 @@
 		</plugins>
 	</build>
 
-	<properties>
-		<mantisbt.soap.version>1.2.15</mantisbt.soap.version>
-	</properties>
 </project>
 
