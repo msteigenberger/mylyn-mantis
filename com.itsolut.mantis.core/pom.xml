@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -14,46 +14,57 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<packaging>eclipse-plugin</packaging>
 	<name>Mylyn Mantis Connector core plugin</name>
 
-	<profiles>
-		<profile>
-			<id>refresh-soap-stubs</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>2.3</version>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>biz.futureware.mantis</groupId>
-									<artifactId>mantis-axis-soap-client</artifactId>
-									<version>${mantisbt.soap.version}</version>
-									<destFileName>mantis-axis-soap-client.jar</destFileName>
-								</artifactItem>
-								<artifactItem>
-									<groupId>biz.futureware.mantis</groupId>
-									<artifactId>mantis-axis-soap-client</artifactId>
-									<version>${mantisbt.soap.version}</version>
-									<classifier>sources</classifier>
-									<destFileName>mantis-axis-soap-client-sources.jar</destFileName>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>lib/</outputDirectory>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-	
+	<dependencies>
+		<dependency>
+			<groupId>biz.futureware.mantis</groupId>
+			<artifactId>mantis-axis-soap-client</artifactId>
+			<version>${mantisbt.soap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>biz.futureware.mantis</groupId>
+			<artifactId>mantis-axis-soap-client</artifactId>
+			<version>${mantisbt.soap.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<stripVersion>true</stripVersion>
+					<includeArtifactIds>mantis-axis-soap-client,axis</includeArtifactIds>
+					<!-- <artifactItems> -->
+					<!-- <artifactItem> -->
+					<!-- <groupId>biz.fut ureware.mantis</groupId> -->
+					<!-- <artifactId>mantis-axis-soap-client</artifactId> -->
+					<!-- <version>${mantisbt.soap.version}</version> -->
+					<!-- <destFileName>mantis-axis-soap-client.jar</destFileName> -->
+					<!-- </artifactItem> -->
+					<!-- <artifactItem> -->
+					<!-- <groupId>biz.futureware.mantis</groupId> -->
+					<!-- <artifactId>mantis-axis-soap-client</artifactId> -->
+					<!-- <version>${mantisbt.soap.version}</version> -->
+					<!-- <classifier>sources</classifier> -->
+					<!-- <destFileName>mantis-axis-soap-client-sources.jar</destFileName> -->
+					<!-- </artifactItem> -->
+					<!-- </artifactItems> -->
+					<outputDirectory>lib/</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<properties>
 		<mantisbt.soap.version>1.2.15</mantisbt.soap.version>
 	</properties>
