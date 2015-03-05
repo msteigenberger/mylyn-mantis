@@ -36,7 +36,7 @@
 				<version>2.10</version>
 				<configuration>
 					<stripVersion>true</stripVersion>
-					<includeArtifactIds>mantis-axis-soap-client,axis</includeArtifactIds>
+					<includeArtifactIds>mantis-axis-soap-client</includeArtifactIds>
 					<!-- <artifactItems> -->
 					<!-- <artifactItem> -->
 					<!-- <groupId>biz.fut ureware.mantis</groupId> -->
