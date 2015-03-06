@@ -214,10 +214,19 @@ litigation.
    </url>
 
    <requires>
-      <import feature="org.eclipse.mylyn_feature" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.mylyn.commons.net" version="3.7.0" match="compatible"/>
+      <import plugin="com.google.inject" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.mylyn.tasks.core" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.mylyn.commons.soap" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.mylyn.commons.ui" version="3.7.0" match="compatible"/>
+      <import plugin="com.google.guava" version="14.0.0" match="greaterOrEqual"/>
+      <import plugin="javax.xml.rpc" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.axis" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="javax.inject"/>
+      <import plugin="javax.xml.soap" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.httpclient" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.mylyn.commons.net" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="javax.wsdl" version="1.5.1" match="compatible"/>
+      <import plugin="org.apache.commons.discovery" version="0.2.0" match="compatible"/>
    </requires>
 
    <plugin
