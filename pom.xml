@@ -28,6 +28,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 	<properties>
 		<tycho-version>0.22.0</tycho-version>
+		<artifactory.server>http://munvmsrv01.kpit.com:8081/artifactory</artifactory.server>
+        <artifactory.repo>kpit-p2-central</artifactory.repo>
+        <repo.url>${artifactory.server}/${artifactory.repo}/</repo.url>
+        <repo.dir>${project.groupId}</repo.dir>
+        <repo.path>${project.build.directory}/repository/</repo.path>
 	</properties>
 
 	<build>
@@ -81,6 +86,28 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>upload-repo</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>upload</goal>
+                        </goals>
+                        <configuration>
+                            <fromDir>${repo.path}</fromDir>
+                            <includes>**</includes>
+                            <toDir>${repo.dir}</toDir>
+                            <url>${repo.url}</url>
+                            <serverId>p2Repo</serverId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
